@@ -12,13 +12,14 @@
         <FrameLayout
             android:id="@+id/frag_mainbody"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_above="@+id/frag_buttonbar"/>
 
         <fragment
             android:id="@+id/frag_buttonbar"
             android:name="com.testing.myapplication.BottombarFragment"
             android:layout_width="match_parent"
-            android:layout_height="8mm"
+            android:layout_height="10mm"
             android:layout_alignParentBottom="true"
             />
     </RelativeLayout>

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -16,8 +17,13 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
-public class LogIn extends AppCompatActivity {
+import static Utils.Utils.changeAppLanguage;
+import static Utils.Utils.getLanguage;
+import static Utils.Utils.hasSet;
+import static Utils.Utils.setLanguage;
 
+public class LogIn extends AppCompatActivity {
+    private static final String TAG = "LogIn";
     TextInputEditText textInputEditTextUsername, textInputEditTextPassword;
     Button buttonLogin;
     TextView textViewSignUp;
@@ -25,9 +31,15 @@ public class LogIn extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //language
+        String sta = getLanguage(this);
+        if(!hasSet(this)) {
+            setLanguage(this, getResources().getConfiguration().locale.getLanguage());
+        }else
+            setLanguage(this,getLanguage(this));
+        changeAppLanguage(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-
         textInputEditTextUsername = findViewById(R.id.username);
         textInputEditTextPassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.buttonLogin);
@@ -68,8 +80,8 @@ public class LogIn extends AppCompatActivity {
                             String[] data = new String[2];
                             data[0] = username;
                             data[1] = password;
-
-                            PutData putData = new PutData("http://112.14.72.115/LoginRegister/login.php", "POST", field, data);
+                            Log.d(TAG, String.format("Address: http://%s/LoginRegister/login.php",getResources().getString(R.string.IP)));
+                            PutData putData = new PutData(String.format("http://%s/LoginRegister/login.php",getResources().getString(R.string.IP)), "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     progressBar.setVisibility(View.GONE);

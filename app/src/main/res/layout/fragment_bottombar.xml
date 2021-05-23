@@ -9,7 +9,7 @@
     android:layout_marginBottom="12dp">
     <ImageButton
         android:id="@+id/bt_home"
-        android:layout_width="50dp"
+        android:layout_width="120dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="#00000000"
@@ -20,7 +20,7 @@
         android:paddingTop="1mm"/>
     <ImageButton
         android:id="@+id/bt_sleep"
-        android:layout_width="50dp"
+        android:layout_width="120dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="#00000000"
@@ -33,7 +33,7 @@
     />
     <ImageButton
         android:id="@+id/bt_user"
-        android:layout_width="50dp"
+        android:layout_width="120dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="#00000000"
